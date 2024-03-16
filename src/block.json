@@ -1,19 +1,17 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
-	"name": "create-block/my-first-block",
+	"apiVersion": 2,
+	"name": "ka-example-block/ka-example-block",
 	"version": "0.1.0",
-	"title": "My First Block",
+	"title": "Kinsta Academy Block",
 	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
-	"example": {},
+	"icon": "superhero-alt",
+	"description": "An example block for Kinsta Academy students",
 	"supports": {
 		"html": false
 	},
-	"textdomain": "my-first-block",
+	"textdomain": "ka-example-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css",
-	"viewScript": "file:./view.js"
+	"style": "file:./style-index.css"
 }

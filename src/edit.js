@@ -33,8 +33,8 @@ export default function Edit() {
 	return (
 		<p { ...useBlockProps() }>
 			{ __(
-				'My First Block – hello from the editor!',
-				'my-first-block'
+				'Kinsta Academy Block – hello from the editor!',
+				'kinsta-academy-block'
 			) }
 		</p>
 	);

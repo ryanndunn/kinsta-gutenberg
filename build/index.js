@@ -54,7 +54,7 @@ __webpack_require__.r(__webpack_exports__);
 function Edit() {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('My First Block – hello from the editor!', 'my-first-block'));
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Kinsta Academy Block – hello from the editor!', 'kinsta-academy-block'));
 }
 
 /***/ }),
@@ -223,7 +223,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/my-first-block","version":"0.1.0","title":"My First Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"my-first-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"ka-example-block/ka-example-block","version":"0.1.0","title":"Kinsta Academy Block","category":"widgets","icon":"superhero-alt","description":"An example block for Kinsta Academy students","supports":{"html":false},"textdomain":"ka-example-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
@@ -378,7 +378,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkmy_first_block"] = globalThis["webpackChunkmy_first_block"] || [];
+/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkkinsta_academy_block"] = globalThis["webpackChunkkinsta_academy_block"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
