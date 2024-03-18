@@ -13,5 +13,18 @@
   "textdomain": "ka-example-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "keywords": [
+    "kinsta",
+    "academy",
+    "superhero",
+    "Ryan"
+  ],
+  "attributes": {
+    "content": {
+      "type": "string",
+      "source": "html",
+      "selector": "p"
+    }
+  }
 }
