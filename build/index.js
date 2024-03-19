@@ -56,19 +56,31 @@ function Edit({
   setAttributes
 }) {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
+  const {
+    content,
+    align
+  } = attributes;
   const onChangeContent = newContent => {
     setAttributes({
       content: newContent
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  const onChangeAlign = newAlign => {
+    setAttributes({
+      align: newAlign === undefined ? 'none' : newAlign
+    });
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.AlignmentControl, {
+    value: align,
+    onChange: onChangeAlign
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     ...blockProps,
     tagName: "p",
     onChange: onChangeContent,
     allowedFormats: ['core/bold', 'core/italic'],
-    value: attributes.content,
+    value: content,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Write your text...')
-  });
+  }));
 }
 
 /***/ }),
@@ -163,10 +175,17 @@ function save({
   attributes
 }) {
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
+  const {
+    content,
+    align
+  } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     ...blockProps,
     tagName: "p",
-    value: attributes.content
+    value: content,
+    style: {
+      textAlign: align
+    }
   });
 }
 
@@ -242,7 +261,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"ka-example-block/ka-example-block","version":"0.1.0","title":"Kinsta Academy Block","category":"widgets","icon":"superhero-alt","description":"An example block for Kinsta Academy students","supports":{"html":false},"textdomain":"ka-example-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","keywords":["kinsta","academy","superhero","Ryan"],"attributes":{"content":{"type":"string","source":"html","selector":"p"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"ka-example-block/ka-example-block","version":"0.1.0","title":"Kinsta Academy Block","category":"widgets","icon":"superhero-alt","description":"An example block for Kinsta Academy students","supports":{"html":false},"textdomain":"ka-example-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","keywords":["kinsta","academy","superhero","Ryan"],"attributes":{"content":{"type":"string","source":"html","selector":"p"},"align":{"type":"string","default":"none"}}}');
 
 /***/ })
 
