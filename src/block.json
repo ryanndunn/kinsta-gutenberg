@@ -29,6 +29,24 @@
 		"align": {
 			"type": "string",
 			"default": "none"
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"kaLink": {
+			"type": "string",
+			"default": ""
+		},
+		"linkLabel": {
+			"type": "string",
+			"default": "Check it out!"
+		},
+		"hasLinkNofollow": {
+			"type": "boolean",
+			"default": false
 		}
 	}
 }

@@ -19,6 +19,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 
 /**
  * Retrieves the translation of text.
@@ -51,6 +53,8 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {Element} Element to render.
  */
+
+
 function Edit({
   attributes,
   setAttributes
@@ -58,7 +62,12 @@ function Edit({
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
   const {
     content,
-    align
+    align,
+    textColor,
+    backgroundColor,
+    kaLink,
+    linkLabel,
+    hasLinkNofollow
   } = attributes;
   const onChangeContent = newContent => {
     setAttributes({
@@ -70,7 +79,62 @@ function Edit({
       align: newAlign === undefined ? 'none' : newAlign
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.AlignmentControl, {
+  const onChangeBackgroundColor = newBackgroundColor => {
+    setAttributes({
+      backgroundColor: newBackgroundColor
+    });
+  };
+  const onChangeTextColor = newTextColor => {
+    setAttributes({
+      textColor: newTextColor
+    });
+  };
+  const onChangeKaLink = newKaLink => {
+    setAttributes({
+      kaLink: newKaLink === undefined ? '' : newKaLink
+    });
+  };
+  const onChangeLinkLabel = newLinkLabel => {
+    setAttributes({
+      linkLabel: newLinkLabel === undefined ? '' : newLinkLabel
+    });
+  };
+  const toggleNofollow = () => {
+    setAttributes({
+      hasLinkNofollow: !hasLinkNofollow
+    });
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color settings', 'ka-example-block'),
+    initialOpen: false,
+    colorSettings: [{
+      value: textColor,
+      onChange: onChangeTextColor,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text color', 'ka-example-block')
+    }, {
+      value: backgroundColor,
+      onChange: onChangeBackgroundColor,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background color', 'ka-example-block')
+    }]
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Link Settings'),
+    initialOpen: true
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('KA Link', 'ka-example-block'),
+    value: kaLink,
+    onChange: onChangeKaLink,
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add your Academy Link', 'ka-example-block')
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Link label', 'ka-example-block'),
+    value: linkLabel,
+    onChange: onChangeLinkLabel,
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add your Academy Link', 'ka-example-block')
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add rel = nofollow', 'ka-example-block'),
+    checked: hasLinkNofollow,
+    onChange: toggleNofollow,
+    help: hasLinkNofollow ? 'Has rel nofollow' : 'No rel nofollow'
+  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.AlignmentControl, {
     value: align,
     onChange: onChangeAlign
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -79,8 +143,17 @@ function Edit({
     onChange: onChangeContent,
     allowedFormats: ['core/bold', 'core/italic'],
     value: content,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Write your text...')
-  }));
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Write your text...'),
+    style: {
+      textAlign: align,
+      backgroundColor: backgroundColor,
+      color: textColor
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ExternalLink, {
+    href: kaLink,
+    className: "ka-button",
+    rel: hasLinkNofollow ? "nofollow" : ""
+  }, linkLabel));
 }
 
 /***/ }),
@@ -177,16 +250,31 @@ function save({
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   const {
     content,
-    align
+    align,
+    backgroundColor,
+    textColor,
+    kaLink,
+    linkLabel,
+    hasLinkNofollow
   } = attributes;
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
+    style: {
+      backgroundColor: backgroundColor
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
     value: content,
     style: {
-      textAlign: align
+      textAlign: align,
+      backgroundColor: backgroundColor,
+      color: textColor
     }
-  });
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: kaLink,
+    className: "ka-button",
+    rel: hasLinkNofollow ? "nofollow" : "noopener noreferrer"
+  }, linkLabel)));
 }
 
 /***/ }),
@@ -245,6 +333,16 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
 /***/ "@wordpress/i18n":
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
@@ -261,7 +359,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"ka-example-block/ka-example-block","version":"0.1.0","title":"Kinsta Academy Block","category":"widgets","icon":"superhero-alt","description":"An example block for Kinsta Academy students","supports":{"html":false},"textdomain":"ka-example-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","keywords":["kinsta","academy","superhero","Ryan"],"attributes":{"content":{"type":"string","source":"html","selector":"p"},"align":{"type":"string","default":"none"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"ka-example-block/ka-example-block","version":"0.1.0","title":"Kinsta Academy Block","category":"widgets","icon":"superhero-alt","description":"An example block for Kinsta Academy students","supports":{"html":false},"textdomain":"ka-example-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","keywords":["kinsta","academy","superhero","Ryan"],"attributes":{"content":{"type":"string","source":"html","selector":"p"},"align":{"type":"string","default":"none"},"backgroundColor":{"type":"string"},"textColor":{"type":"string"},"kaLink":{"type":"string","default":""},"linkLabel":{"type":"string","default":"Check it out!"},"hasLinkNofollow":{"type":"boolean","default":false}}}');
 
 /***/ })
 
