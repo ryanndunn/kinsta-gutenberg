@@ -36,7 +36,7 @@ import {
 	PanelBody,
 	PanelRow,
 	ToggleControl,
-	ExernalLink
+	ExternalLink
 } from '@wordpress/components';
 
 
@@ -132,22 +132,23 @@ export default function Edit( { attributes, setAttributes } ) {
 			<BlockControls>
 				<AlignmentControl value={ align } onChange={ onChangeAlign } />
 			</BlockControls>
-			<RichText 
-				{ ...blockProps }
-				tagName="p"
-				onChange={ onChangeContent }
-				allowedFormats={ [ 'core/bold', 'core/italic'] }
-				value={ content }
-				placeholder={ __( 'Write your text...' ) }
-				style={{ textAlign: align, backgroundColor: backgroundColor, color: textColor }}
-			/>
-			<ExternalLink
-				href={ kaLink }
-				className="ka-button"
-				rel={ hasLinkNofollow ? "nofollow" : "" }
-			>
-				{ linkLabel }
-			</ExternalLink>
+			<div { ...blockProps }>
+				<RichText 
+					tagName="p"
+					onChange={ onChangeContent }
+					allowedFormats={ [ 'core/bold', 'core/italic'] }
+					value={ content }
+					placeholder={ __( 'Write your text...' ) }
+					style={{ textAlign: align, backgroundColor: backgroundColor, color: textColor }}
+				/>
+				<ExternalLink
+					href={ kaLink }
+					className="ka-button"
+					rel={ hasLinkNofollow ? "nofollow" : "" }
+				>
+					{ linkLabel }
+				</ExternalLink>
+			</div>
 		</>
 	);
 }

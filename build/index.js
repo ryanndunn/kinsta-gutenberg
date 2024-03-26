@@ -137,8 +137,9 @@ function Edit({
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.AlignmentControl, {
     value: align,
     onChange: onChangeAlign
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    ...blockProps,
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...blockProps
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
     onChange: onChangeContent,
     allowedFormats: ['core/bold', 'core/italic'],
@@ -149,11 +150,11 @@ function Edit({
       backgroundColor: backgroundColor,
       color: textColor
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ExternalLink, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ExternalLink, {
     href: kaLink,
     className: "ka-button",
     rel: hasLinkNofollow ? "nofollow" : ""
-  }, linkLabel));
+  }, linkLabel)));
 }
 
 /***/ }),
